@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form style="padding-top:4%; padding-left: 37%;  color:white" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+   <div style="padding-left:5%">
+      <input type="submit" style="background: green; color: white" name="submit">
+   </div>
+
+
+</form>
+
+</body>
+</html>

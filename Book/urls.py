@@ -15,10 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from Book_Shop import views as a_views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', a_views.Home, name='Home')
+    path('', a_views.Home, name='Home'),
+    path('upload_book', a_views.upload_books, name='upload_book'),
+    path('delete/<str:id>/', a_views.delete_book, name='delete_book'),
+    path('update/<str:id>/', a_views.update_book, name='update_book'),
 ]
+
+
+if settings.DEBUG:  # Serve media files only in development
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
